@@ -1,3 +1,104 @@
-import { BriefcaseBusiness, CalendarDays, ExternalLink, Filter, Globe2, MapPin, Search, ShieldCheck, SlidersHorizontal } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  CalendarDays,
+  ExternalLink,
+  Globe2,
+  MapPin,
+  Search,
+  ShieldCheck,
+  SlidersHorizontal,
+} from "lucide-react";
 import { AppShell } from "@/components/AppShell";
-export default function Jobs() { return <AppShell title="Jobs & opportunities"><div className="reveal flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="eyebrow">Opportunity directory</p><h2 className="mt-4 font-display text-3xl font-bold tracking-[-.05em] text-[#13213a] sm:text-4xl">Find AI training work that fits.</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#71809a]">Review external AI training opportunities by task type, location, and skill requirements. Apply only when the requirements make sense for you.</p></div><span className="inline-flex items-center gap-2 rounded-full border border-[#cddcf7] bg-[#eef4ff] px-3 py-2 text-xs font-bold text-[#1944a5]"><ShieldCheck size={15} /> External links are labelled</span></div><div className="mt-8 grid gap-3 md:grid-cols-[1fr_auto_auto]"><label className="flex h-12 items-center gap-2 rounded-xl border border-[#dbe4f0] bg-white px-3.5"><Search size={17} className="text-[#8491a6]" /><input className="min-w-0 flex-1 text-sm outline-none" placeholder="Search jobs, platforms, or skills" /></label><button className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#dbe4f0] bg-white px-4 text-sm font-bold text-[#42536e] hover:bg-[#f9fbfe]"><Filter size={16} /> Category</button><button className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#dbe4f0] bg-white px-4 text-sm font-bold text-[#42536e] hover:bg-[#f9fbfe]"><SlidersHorizontal size={16} /> Filters</button></div><div className="mt-8 rounded-2xl border border-dashed border-[#c6d4e8] bg-white px-6 py-16 text-center sm:px-10"><div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#e9f0ff] text-[#1e56d0]"><BriefcaseBusiness size={28} strokeWidth={1.5} /></div><h3 className="mt-6 font-display text-2xl font-bold tracking-[-.03em] text-[#13213a]">No approved opportunities yet</h3><p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#71809a]">New opportunities will appear here when they are added and reviewed. We would rather show an honest empty state than fabricate jobs, salaries, companies, or links.</p><div className="mx-auto mt-8 grid max-w-2xl gap-3 text-left sm:grid-cols-3"><div className="rounded-xl bg-[#f6f8fc] p-4"><Globe2 size={17} className="text-[#1e56d0]" /><p className="mt-3 text-xs font-bold text-[#42536e]">Task type</p><p className="mt-1 text-xs leading-5 text-[#8190a6]">See whether the work involves data training, annotation, evaluation, or prompting.</p></div><div className="rounded-xl bg-[#f6f8fc] p-4"><MapPin size={17} className="text-[#1e56d0]" /><p className="mt-3 text-xs font-bold text-[#42536e]">Country eligibility</p><p className="mt-1 text-xs leading-5 text-[#8190a6]">See where a role is available before applying.</p></div><div className="rounded-xl bg-[#f6f8fc] p-4"><CalendarDays size={17} className="text-[#1e56d0]" /><p className="mt-3 text-xs font-bold text-[#42536e]">Quality expectations</p><p className="mt-1 text-xs leading-5 text-[#8190a6]">Understand review standards before starting a task.</p></div></div></div><div className="mt-6 flex items-start gap-3 rounded-2xl border border-[#ecd9a9] bg-[#fffaf0] p-5"><ExternalLink size={18} className="mt-0.5 shrink-0 text-[#a6680b]" /><p className="text-sm leading-6 text-[#876a35]"><strong className="font-bold text-[#7d5612]">External opportunity notice:</strong> External platforms may have their own registration requirements, assessments, eligibility rules, payment policies, geographic restrictions, and task availability.</p></div></AppShell>; }
+
+export default function Jobs() {
+  return (
+    <AppShell title="Find Work">
+      <div className="reveal">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          Find AI training work
+        </h2>
+        <p className="mt-1.5 max-w-2xl text-sm text-gray-500">
+          Review external AI training opportunities by task type, location, and
+          skill requirements. Apply only when the requirements make sense for
+          you.
+        </p>
+      </div>
+
+      {/* Search + filters */}
+      <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto_auto]">
+        <label className="flex h-10 items-center gap-2 rounded-lg border border-gray-200 bg-white px-3">
+          <Search size={16} className="text-gray-400" />
+          <input
+            className="min-w-0 flex-1 text-sm outline-none placeholder:text-gray-400"
+            placeholder="Search jobs, platforms, or skills"
+          />
+        </label>
+        <button className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-sm font-medium text-gray-600 transition hover:bg-gray-50">
+          <SlidersHorizontal size={15} /> Category
+        </button>
+        <button className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-sm font-medium text-gray-600 transition hover:bg-gray-50">
+          <ShieldCheck size={15} /> Filters
+        </button>
+      </div>
+
+      {/* Empty state */}
+      <div className="mt-8 rounded-xl border border-dashed border-gray-200 bg-white px-6 py-16 text-center">
+        <div className="mx-auto grid h-14 w-14 place-items-center rounded-xl bg-blue-50 text-blue-700">
+          <BriefcaseBusiness size={26} strokeWidth={1.5} />
+        </div>
+        <h3 className="mt-5 text-lg font-semibold text-gray-900">
+          No approved opportunities yet
+        </h3>
+        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-gray-500">
+          New opportunities will appear here when they are added and reviewed.
+          We'd rather show an honest empty state than fabricate jobs.
+        </p>
+        <div className="mx-auto mt-8 grid max-w-2xl gap-3 text-left sm:grid-cols-3">
+          <div className="rounded-lg bg-gray-50 p-4">
+            <Globe2 size={17} className="text-blue-700" />
+            <p className="mt-3 text-xs font-semibold text-gray-700">
+              Task type
+            </p>
+            <p className="mt-1 text-xs leading-5 text-gray-500">
+              Data training, annotation, evaluation, or prompting.
+            </p>
+          </div>
+          <div className="rounded-lg bg-gray-50 p-4">
+            <MapPin size={17} className="text-blue-700" />
+            <p className="mt-3 text-xs font-semibold text-gray-700">
+              Country eligibility
+            </p>
+            <p className="mt-1 text-xs leading-5 text-gray-500">
+              See where a role is available before applying.
+            </p>
+          </div>
+          <div className="rounded-lg bg-gray-50 p-4">
+            <CalendarDays size={17} className="text-blue-700" />
+            <p className="mt-3 text-xs font-semibold text-gray-700">
+              Quality expectations
+            </p>
+            <p className="mt-1 text-xs leading-5 text-gray-500">
+              Understand review standards before starting.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* External notice */}
+      <div className="mt-6 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4">
+        <ExternalLink
+          size={17}
+          className="mt-0.5 shrink-0 text-amber-700"
+        />
+        <p className="text-sm leading-relaxed text-amber-800">
+          <strong className="font-semibold">
+            External opportunity notice:
+          </strong>{" "}
+          External platforms may have their own registration requirements,
+          assessments, eligibility rules, payment policies, and geographic
+          restrictions.
+        </p>
+      </div>
+    </AppShell>
+  );
+}

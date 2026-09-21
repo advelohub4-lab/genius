@@ -1,6 +1,174 @@
-import { ArrowRight, BookOpen, BriefcaseBusiness, CircleDollarSign, Clock3, ExternalLink, FileCheck2, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  BriefcaseBusiness,
+  CircleDollarSign,
+  Clock3,
+  FileCheck2,
+  Flame,
+  ShieldCheck,
+  Wallet,
+} from "lucide-react";
 import { Link } from "wouter";
 import { AppShell } from "@/components/AppShell";
 
-const quickActions = [[BookOpen, "Continue AI training", "AI data training fundamentals", "/app/learn", "#e9f0ff", "#1e56d0"], [BriefcaseBusiness, "View opportunities", "No approved AI tasks yet", "/app/jobs", "#fff5dd", "#a6680b"], [FileCheck2, "Complete profile", "Add your work preferences", "/app/profile", "#edf8f1", "#198754"]] as const;
-export default function DashboardHome() { return <AppShell title="Home"><div className="reveal flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="text-sm font-semibold text-[#8190a6]">Monday, 20 September 2026</p><h2 className="mt-1 font-display text-3xl font-bold tracking-[-.05em] text-[#13213a] sm:text-4xl">Welcome back, Amina<span className="text-[#1e56d0]">.</span></h2><p className="mt-2 text-sm text-[#71809a]">Accurate, consistent AI training work beats quick promises.</p></div><div className="inline-flex items-center gap-2 self-start rounded-full border border-[#cbe3d4] bg-[#edf8f1] px-3 py-2 text-xs font-bold text-[#198754] sm:self-auto"><ShieldCheck size={15} /> Account active <span className="h-1 w-1 rounded-full bg-[#198754]" /> Demo</div></div><div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"><div className="safe-card soft-shadow p-5"><div className="flex items-center justify-between"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#e9f0ff] text-[#1e56d0]"><BookOpen size={19} /></span><span className="text-xs font-bold text-[#1e56d0]">In progress</span></div><p className="mt-6 text-sm font-semibold text-[#71809a]">Training progress</p><p className="mt-1 font-display text-3xl font-bold text-[#13213a]">58<span className="text-base text-[#8190a6]">%</span></p><div className="mt-4 h-1.5 rounded-full bg-[#e9eef6]"><div className="h-full w-[58%] rounded-full bg-[#1e56d0]" /></div></div><div className="safe-card soft-shadow p-5"><div className="flex items-center justify-between"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff5dd] text-[#a6680b]"><BriefcaseBusiness size={19} /></span><span className="text-xs font-bold text-[#8190a6]">Awaiting listings</span></div><p className="mt-6 text-sm font-semibold text-[#71809a]">Available AI tasks</p><p className="mt-1 font-display text-3xl font-bold text-[#13213a]">0</p><p className="mt-2 text-xs text-[#8190a6]">New AI training links will appear here when approved.</p></div><div className="safe-card soft-shadow p-5"><div className="flex items-center justify-between"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#edf8f1] text-[#198754]"><CircleDollarSign size={19} /></span><span className="text-xs font-bold text-[#8190a6]">No activity</span></div><p className="mt-6 text-sm font-semibold text-[#71809a]">Tracked earnings</p><p className="mt-1 font-display text-3xl font-bold text-[#13213a]">$0.00</p><p className="mt-2 text-xs text-[#8190a6]">Complete eligible work to build history.</p></div><div className="safe-card soft-shadow p-5"><div className="flex items-center justify-between"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f1eefb] text-[#6854ac]"><Clock3 size={19} /></span><span className="text-xs font-bold text-[#8190a6]">Getting started</span></div><p className="mt-6 text-sm font-semibold text-[#71809a]">Profile completeness</p><p className="mt-1 font-display text-3xl font-bold text-[#13213a]">40<span className="text-base text-[#8190a6]">%</span></p><Link href="/app/profile" className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-[#1e56d0]">Finish profile <ArrowRight size={13} /></Link></div></div><div className="mt-8 grid gap-6 xl:grid-cols-[1.25fr_.75fr]"><section className="safe-card soft-shadow p-5 sm:p-7"><div className="flex items-start justify-between gap-4"><div><p className="eyebrow">Your next best work steps</p><h3 className="mt-3 font-display text-2xl font-bold tracking-[-.04em] text-[#13213a]">Train consistently. Work accurately.</h3></div><FileCheck2 size={22} className="text-[#d9ae55]" /></div><div className="mt-7 grid gap-3">{quickActions.map(([Icon, label, text, href, bg, color]) => <Link href={href} key={label} className="group flex items-center gap-4 rounded-2xl border border-[#e3eaf3] p-4 transition hover:border-[#bfd1ed] hover:bg-[#f9fbfe]"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl" style={{ backgroundColor: bg, color }}><Icon size={20} /></span><div className="min-w-0 flex-1"><p className="text-sm font-bold text-[#13213a]">{label}</p><p className="mt-1 truncate text-xs text-[#8190a6]">{text}</p></div><ArrowRight size={17} className="text-[#9baaca] transition group-hover:translate-x-1 group-hover:text-[#1e56d0]" /></Link>)}</div></section><section className="safe-card soft-shadow overflow-hidden"><div className="bg-[#0e1b33] p-6 text-white sm:p-7"><p className="text-xs font-bold uppercase tracking-[.15em] text-[#9fb1ce]">Trust note</p><h3 className="mt-4 font-display text-2xl font-bold tracking-[-.04em]">Quality work is the product.</h3><p className="mt-3 text-sm leading-6 text-[#afc0da]">This workspace is designed to help you build capability and make informed decisions — not to sell a guaranteed outcome.</p></div><div className="p-6"><div className="flex items-start gap-3"><ShieldCheck size={18} className="mt-0.5 shrink-0 text-[#198754]" /><p className="text-sm leading-6 text-[#64728a]">External opportunities are always marked before you apply.</p></div><Link href="/legal/disclaimer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#1e56d0]">Read earnings disclaimer <ExternalLink size={15} /></Link></div></section></div></AppShell>; }
+const stats = [
+  {
+    icon: CircleDollarSign,
+    label: "Today's earnings",
+    value: "$0.00",
+    note: "No completed tasks today",
+    tint: "bg-blue-50 text-blue-700",
+  },
+  {
+    icon: Wallet,
+    label: "Available balance",
+    value: "$0.00",
+    note: "No withdrawals configured",
+    tint: "bg-amber-50 text-amber-700",
+  },
+  {
+    icon: FileCheck2,
+    label: "Tasks completed",
+    value: "0",
+    note: "Start training to qualify",
+    tint: "bg-green-50 text-green-700",
+  },
+  {
+    icon: Flame,
+    label: "Current streak",
+    value: "0 days",
+    note: "Complete tasks daily to build",
+    tint: "bg-purple-50 text-purple-700",
+  },
+] as const;
+
+const quickActions = [
+  {
+    icon: BookOpen,
+    label: "Continue learning",
+    text: "AI data training fundamentals · 58% complete",
+    href: "/app/learn",
+  },
+  {
+    icon: BriefcaseBusiness,
+    label: "Find work",
+    text: "Browse available AI training opportunities",
+    href: "/app/jobs",
+  },
+  {
+    icon: FileCheck2,
+    label: "Complete profile",
+    text: "Add your work preferences and skills",
+    href: "/app/profile",
+  },
+] as const;
+
+export default function DashboardHome() {
+  const hour = new Date().getHours();
+  const greeting =
+    hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+
+  return (
+    <AppShell title="Dashboard">
+      <div className="reveal">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          {greeting}, Amina
+        </h2>
+        <p className="mt-1.5 text-sm text-gray-500">
+          Here's what's happening with your work today.
+        </p>
+      </div>
+
+      {/* Stat cards */}
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {stats.map(({ icon: Icon, label, value, note, tint }) => (
+          <div key={label} className="safe-card soft-shadow p-5">
+            <div className="flex items-center justify-between">
+              <span
+                className={`grid h-9 w-9 place-items-center rounded-lg ${tint}`}
+              >
+                <Icon size={18} strokeWidth={1.75} />
+              </span>
+            </div>
+            <p className="mt-4 text-xs font-medium text-gray-500">{label}</p>
+            <p className="mt-1 text-2xl font-bold tabular text-gray-900">
+              {value}
+            </p>
+            <p className="mt-1.5 text-xs text-gray-400">{note}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Quick actions + side panel */}
+      <div className="mt-8 grid gap-6 lg:grid-cols-[1.3fr_.7fr]">
+        <section className="safe-card soft-shadow p-6">
+          <h3 className="text-base font-semibold text-gray-900">
+            Next steps
+          </h3>
+          <p className="mt-1 text-sm text-gray-500">
+            Actions to help you move forward.
+          </p>
+          <div className="mt-5 grid gap-3">
+            {quickActions.map(({ icon: Icon, label, text, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className="group flex items-center gap-4 rounded-lg border border-gray-200 p-4 transition hover:border-gray-300 hover:bg-gray-50"
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-700">
+                  <Icon size={19} strokeWidth={1.75} />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-gray-900">
+                    {label}
+                  </p>
+                  <p className="mt-0.5 truncate text-xs text-gray-500">
+                    {text}
+                  </p>
+                </div>
+                <ArrowRight
+                  size={17}
+                  className="text-gray-300 transition group-hover:translate-x-0.5 group-hover:text-blue-700"
+                />
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="safe-card soft-shadow overflow-hidden">
+          <div className="bg-[#0e1b33] p-6 text-white">
+            <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
+              Trust note
+            </p>
+            <h3 className="mt-3 text-lg font-semibold">
+              Quality work is the product.
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-300">
+              This workspace helps you build capability and make informed
+              decisions — not to sell a guaranteed outcome.
+            </p>
+          </div>
+          <div className="p-6">
+            <div className="flex items-start gap-3">
+              <ShieldCheck
+                size={18}
+                className="mt-0.5 shrink-0 text-green-600"
+              />
+              <p className="text-sm leading-relaxed text-gray-600">
+                External opportunities are always marked before you apply.
+              </p>
+            </div>
+            <Link
+              href="/legal/disclaimer"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-blue-700 hover:text-blue-800"
+            >
+              Read earnings disclaimer{" "}
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+        </section>
+      </div>
+    </AppShell>
+  );
+}

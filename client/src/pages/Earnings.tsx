@@ -1,3 +1,145 @@
-import { ArrowDownToLine, CircleDollarSign, Clock3, Info, ReceiptText, ShieldCheck, WalletCards } from "lucide-react";
+import {
+  ArrowDownToLine,
+  CircleDollarSign,
+  Clock3,
+  Info,
+  ReceiptText,
+  ShieldCheck,
+  Wallet,
+} from "lucide-react";
 import { AppShell } from "@/components/AppShell";
-export default function Earnings() { return <AppShell title="Earnings"><div className="reveal"><p className="eyebrow">Earnings overview</p><h2 className="mt-4 font-display text-3xl font-bold tracking-[-.05em] text-[#13213a] sm:text-4xl">Track what you actually earn.</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#71809a]">This area records eligible work activity after it is completed and confirmed. It never forecasts or guarantees income.</p></div><div className="mt-8 grid gap-4 md:grid-cols-3"><div className="safe-card soft-shadow p-5"><div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#e9f0ff] text-[#1e56d0]"><CircleDollarSign size={19} /></span><span className="text-xs font-bold text-[#8190a6]">All time</span></div><p className="mt-6 text-sm font-semibold text-[#71809a]">Completed earnings</p><p className="mt-1 font-display text-3xl font-bold text-[#13213a]">$0.00</p></div><div className="safe-card soft-shadow p-5"><div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#fff5dd] text-[#a6680b]"><Clock3 size={19} /></span><span className="text-xs font-bold text-[#8190a6]">In review</span></div><p className="mt-6 text-sm font-semibold text-[#71809a]">Pending earnings</p><p className="mt-1 font-display text-3xl font-bold text-[#13213a]">$0.00</p></div><div className="safe-card soft-shadow p-5"><div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#edf8f1] text-[#198754]"><WalletCards size={19} /></span><span className="text-xs font-bold text-[#8190a6]">Not configured</span></div><p className="mt-6 text-sm font-semibold text-[#71809a]">Available to withdraw</p><p className="mt-1 font-display text-3xl font-bold text-[#13213a]">$0.00</p></div></div><div className="mt-8 grid gap-6 xl:grid-cols-[1.2fr_.8fr]"><section className="safe-card soft-shadow overflow-hidden"><div className="flex items-center justify-between border-b border-[#e7edf5] p-5"><div><h3 className="font-display text-xl font-bold text-[#13213a]">Earnings activity</h3><p className="mt-1 text-xs text-[#8190a6]">A record of completed and pending eligible work.</p></div><button className="inline-flex items-center gap-2 rounded-lg border border-[#dbe4f0] px-3 py-2 text-xs font-bold text-[#71809a]" disabled><ReceiptText size={14} /> Export</button></div><div className="px-5 py-16 text-center"><div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[#f1f4f9] text-[#9baaca]"><ReceiptText size={25} strokeWidth={1.5} /></div><h4 className="mt-5 font-display text-xl font-bold text-[#13213a]">No earnings yet</h4><p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-[#71809a]">Complete eligible work opportunities to begin building your earnings history.</p></div></section><aside className="rounded-2xl border border-[#cddcf7] bg-[#eef4ff] p-5 sm:p-6"><div className="flex items-start gap-3"><Info size={19} className="mt-0.5 shrink-0 text-[#1e56d0]" /><div><p className="font-bold text-[#1944a5]">Earnings are variable</p><p className="mt-2 text-sm leading-6 text-[#456293]">The platform does not guarantee a specific daily, weekly, or monthly income. Actual earnings depend on available work, eligibility, performance, and third-party payment policies.</p></div></div><div className="mt-6 border-t border-[#cddcf7] pt-5"><div className="flex items-start gap-3"><ShieldCheck size={18} className="mt-0.5 shrink-0 text-[#1e56d0]" /><p className="text-sm leading-6 text-[#456293]">No balances are invented for demonstration purposes.</p></div></div></aside></div><div className="mt-6 rounded-2xl border border-[#dbe4f0] bg-white p-5"><div className="flex items-start gap-3"><ArrowDownToLine size={18} className="mt-0.5 text-[#8190a6]" /><p className="text-sm leading-6 text-[#71809a]">Withdrawal and payment information will be configurable when real earning sources and payout policies are connected.</p></div></div></AppShell>; }
+
+const summary = [
+  {
+    icon: CircleDollarSign,
+    label: "Total earnings",
+    value: "$0.00",
+    note: "All time",
+    tint: "bg-blue-50 text-blue-700",
+  },
+  {
+    icon: Clock3,
+    label: "Pending",
+    value: "$0.00",
+    note: "In review",
+    tint: "bg-amber-50 text-amber-700",
+  },
+  {
+    icon: Wallet,
+    label: "Available",
+    value: "$0.00",
+    note: "Ready to withdraw",
+    tint: "bg-green-50 text-green-700",
+  },
+];
+
+export default function Earnings() {
+  return (
+    <AppShell title="Earnings">
+      <div className="reveal">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          Track your earnings
+        </h2>
+        <p className="mt-1.5 max-w-2xl text-sm text-gray-500">
+          A clear record of eligible work after it's completed and confirmed.
+          This never forecasts or guarantees income.
+        </p>
+      </div>
+
+      {/* Summary cards */}
+      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        {summary.map(({ icon: Icon, label, value, note, tint }) => (
+          <div key={label} className="safe-card soft-shadow p-5">
+            <div className="flex items-center gap-3">
+              <span
+                className={`grid h-9 w-9 place-items-center rounded-lg ${tint}`}
+              >
+                <Icon size={18} strokeWidth={1.75} />
+              </span>
+              <span className="text-xs font-medium text-gray-500">{note}</span>
+            </div>
+            <p className="mt-4 text-xs font-medium text-gray-500">{label}</p>
+            <p className="mt-1 text-2xl font-bold tabular text-gray-900">
+              {value}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Activity + info */}
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_.8fr]">
+        <section className="safe-card soft-shadow overflow-hidden">
+          <div className="flex items-center justify-between border-b border-gray-100 p-5">
+            <div>
+              <h3 className="text-base font-semibold text-gray-900">
+                Earnings activity
+              </h3>
+              <p className="mt-0.5 text-xs text-gray-500">
+                Completed and pending eligible work.
+              </p>
+            </div>
+            <button
+              className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-500"
+              disabled
+            >
+              <ReceiptText size={14} /> Export
+            </button>
+          </div>
+          <div className="px-5 py-16 text-center">
+            <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-gray-100 text-gray-400">
+              <ReceiptText size={22} strokeWidth={1.5} />
+            </div>
+            <h4 className="mt-4 text-base font-semibold text-gray-900">
+              No earnings yet
+            </h4>
+            <p className="mx-auto mt-1.5 max-w-sm text-sm leading-relaxed text-gray-500">
+              Complete eligible work to begin building your earnings history.
+            </p>
+          </div>
+        </section>
+
+        <aside className="space-y-4">
+          <div className="safe-card soft-shadow p-5">
+            <div className="flex items-start gap-3">
+              <Info
+                size={18}
+                className="mt-0.5 shrink-0 text-blue-700"
+              />
+              <div>
+                <p className="text-sm font-semibold text-gray-900">
+                  Earnings are variable
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-gray-500">
+                  The platform does not guarantee a specific daily, weekly, or
+                  monthly income. Actual earnings depend on available work,
+                  eligibility, performance, and third-party policies.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="safe-card soft-shadow p-5">
+            <div className="flex items-start gap-3">
+              <ShieldCheck
+                size={18}
+                className="mt-0.5 shrink-0 text-green-600"
+              />
+              <p className="text-sm leading-relaxed text-gray-500">
+                No balances are invented for demonstration purposes.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <ArrowDownToLine
+              size={17}
+              className="mt-0.5 shrink-0 text-gray-400"
+            />
+            <p className="text-sm leading-relaxed text-gray-500">
+              Withdrawal and payment info will be configurable when real earning
+              sources and payout policies are connected.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </AppShell>
+  );
+}

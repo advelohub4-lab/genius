@@ -1,25 +1,110 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Skill2EarnLogo } from "./Skill2EarnLogo";
 
 const menuItems = [
-  ["#ai-cards", "Train AI cards"],
-  ["/app/learn", "AI training workspace"],
-  ["/app/jobs", "Jobs & opportunities"],
+  ["#how-it-works", "How it works"],
+  ["/app/jobs", "Find work"],
+  ["/app/learn", "Learning"],
   ["/app/earnings", "Earnings"],
-  ["/app/profile", "Profile & settings"],
-  ["/activate", "Activation"],
+  ["/legal/disclaimer", "Earnings disclaimer"],
 ];
 
 export function MarketingHeader() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
-  return <header className="relative z-30 border-b border-[#dbe4f0]/80 bg-white/90 backdrop-blur-xl">
-    <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
-      <Skill2EarnLogo />
-      <div className="flex items-center gap-2.5"><Link href="/auth/signin" className="hidden rounded-xl px-4 py-2.5 text-sm font-bold text-[#1e56d0] transition hover:bg-[#e9f0ff] sm:inline-flex">Sign in</Link><button onClick={() => setOpen((value) => !value)} className="grid h-11 w-11 place-items-center rounded-xl border border-[#dbe4f0] bg-white text-[#13213a] shadow-sm transition hover:border-[#9fb7e4]" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>{open ? <X size={20} /> : <Menu size={20} />}</button></div>
-    </div>
-    {open && <div className="absolute right-5 top-[80px] w-[min(360px,calc(100vw-2.5rem))] rounded-2xl border border-[#dbe4f0] bg-white p-3 shadow-[0_20px_60px_rgba(24,52,100,.18)] lg:right-8"><div className="flex items-center justify-between border-b border-[#edf1f7] px-3 pb-3"><div><p className="font-display font-bold text-[#13213a]">Skill2Earn HUB</p><p className="text-xs text-[#8190a6]">One-page view · more pages inside</p></div><span className="rounded-full bg-[#eef4ff] px-2.5 py-1 text-[10px] font-bold text-[#1e56d0]">Menu</span></div><nav className="mt-2 grid gap-1" aria-label="All website pages">{menuItems.map(([href, label]) => href.startsWith("#") ? <a key={href} href={href} onClick={close} className="flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold text-[#42536e] hover:bg-[#f6f8fc] hover:text-[#1e56d0]">{label}<ArrowUpRight size={15} /></a> : <Link key={href} href={href} onClick={close} className="flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold text-[#42536e] hover:bg-[#f6f8fc] hover:text-[#1e56d0]">{label}<ArrowUpRight size={15} /></Link>)}</nav><div className="mt-2 grid grid-cols-2 gap-2 border-t border-[#edf1f7] pt-3"><Link onClick={close} href="/auth/signin" className="rounded-xl border border-[#dbe4f0] px-3 py-3 text-center text-sm font-bold text-[#1e56d0]">Sign in</Link><Link onClick={close} href="/auth/signup" className="rounded-xl bg-[#1e56d0] px-3 py-3 text-center text-sm font-bold text-white">Create account</Link></div></div>}
-  </header>;
+  return (
+    <header className="sticky top-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
+        <Skill2EarnLogo />
+        <nav className="hidden items-center gap-1 md:flex">
+          {menuItems.map(([href, label]) =>
+            href.startsWith("#") ? (
+              <a
+                key={href}
+                href={href}
+                className="rounded-lg px-3 py-2 text-[13px] font-medium text-gray-600 transition hover:bg-gray-50 hover:text-gray-900"
+              >
+                {label}
+              </a>
+            ) : (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-lg px-3 py-2 text-[13px] font-medium text-gray-600 transition hover:bg-gray-50 hover:text-gray-900"
+              >
+                {label}
+              </Link>
+            )
+          )}
+        </nav>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/auth/signin"
+            className="hidden rounded-lg px-3.5 py-2 text-[13px] font-medium text-gray-600 transition hover:bg-gray-50 hover:text-gray-900 sm:inline-flex"
+          >
+            Sign in
+          </Link>
+          <Link
+            href="/auth/signup"
+            className="hidden rounded-lg bg-blue-700 px-3.5 py-2 text-[13px] font-medium text-white transition hover:bg-blue-800 sm:inline-flex"
+          >
+            Get started
+          </Link>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-9 w-9 place-items-center rounded-lg border border-gray-200 text-gray-700 md:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </div>
+      {open && (
+        <div className="border-t border-gray-100 bg-white px-5 py-3 md:hidden">
+          <nav className="grid gap-0.5">
+            {menuItems.map(([href, label]) =>
+              href.startsWith("#") ? (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={close}
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50"
+                >
+                  {label}
+                </a>
+              ) : (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={close}
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50"
+                >
+                  {label}
+                </Link>
+              )
+            )}
+            <div className="mt-2 grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+              <Link
+                href="/auth/signin"
+                onClick={close}
+                className="rounded-lg border border-gray-200 px-3 py-2.5 text-center text-sm font-medium text-gray-700"
+              >
+                Sign in
+              </Link>
+              <Link
+                href="/auth/signup"
+                onClick={close}
+                className="rounded-lg bg-blue-700 px-3 py-2.5 text-center text-sm font-medium text-white"
+              >
+                Get started
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
 }
