@@ -1,0 +1,37 @@
+{
+  "cards": [
+    {
+      "eyebrow": "Microtask Training",
+      "title": "Train AI Models",
+      "description": "Complete short quality-control tasks that help improve model performance and earn pay per task where available.",
+      "bullets": [
+        "Task examples: data labeling, text annotation, and model evaluation.",
+        "Typical tasks take 1–15 minutes; speed and accuracy affect qualification.",
+        "Task availability and eligibility change by project—follow external platform rules for each posting."
+      ],
+      "cta": "Browse training tasks"
+    },
+    {
+      "eyebrow": "Paid Tasks",
+      "title": "Earn Money Online",
+      "description": "Pick paid microtasks—like prompt testing and text annotation—and get paid per completed task when eligible.",
+      "bullets": [
+        "Examples include prompt testing, data labeling, tagging, and simple transcription.",
+        "Pay varies by task; review pay rates and acceptance criteria before starting (no income guarantee).",
+        "Check task availability, your eligibility, and external platform rules on every assignment."
+      ],
+      "cta": "View paid tasks"
+    },
+    {
+      "eyebrow": "Work Anywhere",
+      "title": "Remote, Flexible Work",
+      "description": "Do remote tasks on your schedule—accept work when available and build a reputation for quality.",
+      "bullets": [
+        "Common task types: model evaluation, prompt testing, and data labeling.",
+        "Eligibility requirements and task availability differ by project; keep your profile and qualifications current.",
+        "Always follow external platform rules and task-specific instructions to remain eligible."
+      ],
+      "cta": "Create your profile"
+    }
+  ]
+}
