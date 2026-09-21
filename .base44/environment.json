@@ -1,0 +1,38 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "JWT_SECRET",
+      "description": "HS256 signing secret for session cookies (jose). Generated dev placeholder; replace for production.",
+      "requiredAtBoot": false,
+      "generatedForDevelopment": true
+    },
+    {
+      "name": "OAUTH_SERVER_URL",
+      "description": "Manus OAuth server base URL. Required for login flow. Optional for boot (landing page renders without it).",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "VITE_APP_ID",
+      "description": "Manus project/app ID used by OAuth token exchange and session tokens. Required for login.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "OWNER_OPEN_ID",
+      "description": "Manus openId of the project owner; auto-promoted to admin role on login. Optional for boot.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "BUILT_IN_FORGE_API_URL",
+      "description": "Manus Forge API base URL. Powers LLM, image generation, storage proxy, and heartbeat cron jobs. Optional for boot.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "BUILT_IN_FORGE_API_KEY",
+      "description": "Manus Forge API bearer key. Required alongside BUILT_IN_FORGE_API_URL for forge features. Optional for boot.",
+      "requiredAtBoot": false
+    }
+  ]
+}
