@@ -9,6 +9,6 @@ export function Skill2EarnLogo({ light = false, compact = false }: { light?: boo
         <path d="M28.8 14.5h-4.7v4.7" stroke="#d9ae55" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     </span>
-    {!compact && <span className={`font-display text-[1.02rem] font-bold tracking-[-.03em] ${light ? "text-white" : "text-[#13213a]"}`}>Skill2Earn <span className={light ? "text-[#f0c96f]" : "text-[#1e56d0]"}>HUB</span></span>}
+    {!compact && <span className={`text-[1.02rem] font-bold tracking-[-.03em] ${light ? "text-white" : "text-[#13213a]"}`}>Skill2Earn <span className={light ? "text-[#f0c96f]" : "text-[#1e56d0]"}>HUB</span></span>}
   </Link>;
 }
