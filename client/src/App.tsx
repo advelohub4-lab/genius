@@ -11,8 +11,12 @@ import Learn from "./pages/Learn";
 import Jobs from "./pages/Jobs";
 import Earnings from "./pages/Earnings";
 import Profile from "./pages/Profile";
+import Activity from "./pages/Activity";
+import Notifications from "./pages/Notifications";
+import Help from "./pages/Help";
 import Admin from "./pages/Admin";
 import Legal from "./pages/Legal";
+import WorkDetail from "./pages/WorkDetail";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -25,8 +29,12 @@ function Router() {
     <Route path="/app/jobs" component={Jobs} />
     <Route path="/app/earnings" component={Earnings} />
     <Route path="/app/profile" component={Profile} />
+    <Route path="/app/activity" component={Activity} />
+    <Route path="/app/notifications" component={Notifications} />
+    <Route path="/app/help" component={Help} />
     <Route path="/admin" component={Admin} />
     <Route path="/legal/:page" component={Legal} />
+    <Route path="/work/:slug" component={WorkDetail} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />
   </Switch>;
