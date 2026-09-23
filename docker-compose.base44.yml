@@ -1,0 +1,61 @@
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: base44rootpw
+      MYSQL_DATABASE: skill2earn
+      MYSQL_USER: skill2earn
+      MYSQL_PASSWORD: skill2earnpw
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pbase44rootpw"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  setup:
+    image: node:22-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - pnpm_store:/app/.pnpm-store
+    environment:
+      - DATABASE_URL=mysql://skill2earn:skill2earnpw@db:3306/skill2earn
+      - NODE_ENV=development
+    command: sh -c "corepack enable pnpm && pnpm install --frozen-lockfile && npx drizzle-kit migrate"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    image: node:22-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - pnpm_store:/app/.pnpm-store
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DATABASE_URL=mysql://skill2earn:skill2earnpw@db:3306/skill2earn
+      - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
+      - BASE44_PUBLIC_HOST_SUFFIX
+      - BASE44_SANDBOX_HOST_DOMAIN
+    env_file:
+      - ./.env.base44-defaults
+      - /run/base44/app.env
+    command: sh -c "corepack enable pnpm && pnpm install --frozen-lockfile && pnpm dev"
+    depends_on:
+      setup:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+  pnpm_store:
